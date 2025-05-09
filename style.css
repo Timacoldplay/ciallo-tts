@@ -1,5 +1,6 @@
 body {
     background-color: #f0f4f8;
+    font-size: 0.95rem;
 }
 
 .card {
@@ -287,4 +288,20 @@ footer a:hover {
     width: 3rem;
     height: 3rem;
     color: #6366f1;
+}
+
+#text {
+    min-height: 300px;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 12px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.form-text {
+    font-size: 0.85rem;
 }
