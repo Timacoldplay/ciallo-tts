@@ -13,8 +13,9 @@ body {
 }
 
 .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(99, 102, 241, 0.08);
+    /* 移除悬浮时的阴影和上移效果 */
+    /* transform: translateY(-2px); */
+    /* box-shadow: 0 6px 25px rgba(99, 102, 241, 0.08); */
 }
 
 .card-header {
@@ -86,10 +87,11 @@ body {
 }
 
 .history-item:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
-    border-color: rgba(99, 102, 241, 0.15);
-    background: linear-gradient(145deg, #f8faff 0%, #f0f7ff 100%);
+    /* 移除悬浮时的阴影、边框色和背景变化 */
+    /* transform: translateY(-1px); */
+    /* box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08); */
+    /* border-color: rgba(99, 102, 241, 0.15); */
+    /* background: linear-gradient(145deg, #f8faff 0%, #f0f7ff 100%); */
 }
 
 .btn-group .btn {
@@ -203,7 +205,8 @@ footer a:hover {
 
 /* 添加按钮点击反馈效果 */
 .btn:active {
-    transform: scale(0.98);
+    /* 移除按钮点击时的缩放效果 */
+    /* transform: scale(0.98); */
 }
 
 /* 优化表单控件悬停状态 */
