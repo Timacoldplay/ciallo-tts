@@ -20,7 +20,7 @@ function loadSpeakers() {
         dataType: 'json',
         success: function(data) {
             apiConfig = data;
-            updateSpeakerOptions('edge-api');
+            updateSpeakerOptions('edge-api', 'zh-CN-YunjianNeural');
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.error(`加载讲述者失败：${textStatus} - ${errorThrown}`);
@@ -29,7 +29,7 @@ function loadSpeakers() {
     });
 }
 
-function updateSpeakerOptions(apiName) {
+function updateSpeakerOptions(apiName, defaultSpeaker = null) {
     const speakers = apiConfig[apiName].speakers;
     const speakerSelect = $('#speaker');
     speakerSelect.empty();
@@ -37,6 +37,11 @@ function updateSpeakerOptions(apiName) {
     Object.entries(speakers).forEach(([key, value]) => {
         speakerSelect.append(new Option(value, key));
     });
+    
+    // 如果指定了默认语音，则设置它
+    if (defaultSpeaker && speakers[defaultSpeaker]) {
+        speakerSelect.val(defaultSpeaker);
+    }
 }
 
 function updateSliderLabel(sliderId, labelId) {
@@ -56,6 +61,10 @@ $(document).ready(function() {
     }
     loadSpeakers().then(() => {
         $('#apiTips').text('Edge API 请求应该不限次数');
+        
+        // 设置默认语速为3
+        $('#rate').val(3);
+        updateSliderLabel('rate', 'rateValue');
         
         // 初始化音频播放器
         initializeAudioPlayer();
