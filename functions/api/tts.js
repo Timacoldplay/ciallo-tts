@@ -27,7 +27,7 @@ export async function onRequest(context) {
       if (request.method === "POST") {
         const body = await request.json();
         const text = body.text || "";
-        const voiceName = body.voice || "zh-CN-XiaoxiaoMultilingualNeural";
+        const voiceName = body.voice || "zh-CN-YunjianNeural";
         const rate = Number(body.rate) || 0;
         const pitch = Number(body.pitch) || 0;
         const outputFormat = body.format || "audio-24khz-48kbitrate-mono-mp3";
@@ -36,7 +36,7 @@ export async function onRequest(context) {
         return await handleTTS(text, voiceName, rate, pitch, outputFormat, download);
       } else if (request.method === "GET") {
         const text = url.searchParams.get("t") || "";
-        const voiceName = url.searchParams.get("v") || "zh-CN-XiaoxiaoMultilingualNeural";
+        const voiceName = url.searchParams.get("v") || "zh-CN-YunjianNeural";
         const rate = Number(url.searchParams.get("r")) || 0;
         const pitch = Number(url.searchParams.get("p")) || 0;
         const outputFormat = url.searchParams.get("o") || "audio-24khz-48kbitrate-mono-mp3";
@@ -259,7 +259,7 @@ function getDefaultHTML(url) {
   const baseUrl = `${url.protocol}//${url.host}/api`;
   return `
   <ol>
-      <li> /tts?t=[text]&v=[voice]&r=[rate]&p=[pitch]&o=[outputFormat] <a href="${baseUrl}/tts?t=hello, world&v=zh-CN-XiaoxiaoMultilingualNeural&r=0&p=0&o=audio-24khz-48kbitrate-mono-mp3">试试</a> </li>
+      <li> /tts?t=[text]&v=[voice]&r=[rate]&p=[pitch]&o=[outputFormat] <a href="${baseUrl}/tts?t=hello, world&v=zh-CN-YunjianNeural&r=0&p=0&o=audio-24khz-48kbitrate-mono-mp3">试试</a> </li>
       <li> /voices?l=[locale, 如 zh|zh-CN]&f=[format, 0/1/空 0(TTS-Server)|1(MultiTTS)] <a href="${baseUrl}/voices?l=zh&f=1">试试</a> </li>
   </ol>
   `;

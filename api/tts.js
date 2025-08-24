@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     if (req.method === "POST") {
       const body = req.body;
       const text = body.text || "";
-      const voiceName = body.voice || "zh-CN-XiaoxiaoMultilingualNeural";
+      const voiceName = body.voice || "zh-CN-YunjianNeural";
       const rate = Number(body.rate) || 0;
       const pitch = Number(body.pitch) || 0;
       const outputFormat = body.format || "audio-24khz-48kbitrate-mono-mp3";
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
     } else if (req.method === "GET") {
       const { query } = req;
       const text = query.t || "";
-      const voiceName = query.v || "zh-CN-XiaoxiaoMultilingualNeural";
+      const voiceName = query.v || "zh-CN-YunjianNeural";
       const rate = Number(query.r) || 0;
       const pitch = Number(query.p) || 0;
       const outputFormat = query.o || "audio-24khz-48kbitrate-mono-mp3";
