@@ -62,8 +62,8 @@ $(document).ready(function() {
     loadSpeakers().then(() => {
         $('#apiTips').text('Edge API 请求应该不限次数');
         
-        // 设置默认语速为3
-        $('#rate').val(3);
+        // 设置默认语速为2
+        $('#rate').val(2);
         updateSliderLabel('rate', 'rateValue');
         
         // 初始化音频播放器
