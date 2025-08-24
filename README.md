@@ -1,6 +1,8 @@
-# Ciallo TTS - 在线文本转语音工具
+# LibreTTS - 在线文本转语音工具
 
-Ciallo TTS 是一款免费的在线文本转语音工具，支持多种声音选择，可调节语速和语调，提供即时试听和下载功能。
+LibreTTS 是一款免费的在线文本转语音工具，支持多种声音选择，可调节语速和语调，提供即时试听和下载功能。
+
+> 本项目曾用名 Ciallo TTS。
 
 ## 功能特点
 
@@ -11,6 +13,7 @@ Ciallo TTS 是一款免费的在线文本转语音工具，支持多种声音选
 - 📱 响应式设计，支持移动端
 - 💾 支持音频下载
 - 📝 历史记录功能（最多保存50条）
+- 🔌 支持添加自定义OpenAI格式的TTS API
 
 ## API 说明
 
@@ -27,7 +30,58 @@ Ciallo TTS 是一款免费的在线文本转语音工具，支持多种声音选
   - 仅支持 GET 方法
   - 示例: `/api/voices?l=zh&f=1` (l参数用于筛选语言，f参数指定返回格式)
 
-默认情况下，API 允许跨域请求，可以被任何网站调用。
+例如：`https://libretts.is-an.org/api/tts`
+
+### 自定义 API
+
+LibreTTS 支持添加自定义 API 端点，目前支持两种格式：
+
+#### OpenAI 格式 API
+
+- 支持与 OpenAI TTS API 兼容的服务，如 OpenAI、LMStudio、LocalAI 等
+- 请求格式: POST
+  ```json
+  {
+    "model": "tts-1",
+    "input": "您好，这是一段测试文本",
+    "voice": "alloy",
+    "response_format": "mp3"
+  }
+  ```
+- 可选参数：`instructions` - 语音风格指导
+
+#### Edge 格式 API
+
+- 支持与 Microsoft Edge TTS API 兼容的服务
+- 请求格式: POST
+  ```json
+  {
+    "text": "您好，这是一段测试文本",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "rate": 0,
+    "pitch": 0
+  }
+  ```
+
+#### 如何添加自定义 API
+
+1. 点击界面上的"管理API"按钮
+2. 填写以下信息：
+   - API 名称：自定义名称
+   - API 端点：语音生成服务地址
+   - API 密钥：可选，用于授权
+   - 模型列表端点：可选，用于获取可用模型
+   - API 格式：选择 OpenAI 或 Edge 格式
+   - 手动输入讲述人列表：逗号分隔的讲述人列表
+   - 最大文本长度：可选，限制单次请求的文本长度
+
+3. 点击"获取模型"按钮可自动填充可用讲述人列表
+4. 点击"保存"完成添加
+
+#### 导入/导出 API 配置
+
+- 导出：将所有自定义 API 配置导出为 JSON 文件
+- 导入：从 JSON 文件导入 API 配置
 
 ## 部署指南
 
@@ -60,3 +114,4 @@ Ciallo TTS 是一款免费的在线文本转语音工具，支持多种声音选
 
 除了原有配置外，现在项目支持设置环境变量 PASSWORD 来开启访问密码验证。如果 PASSWORD 非空，则用户第一次访问页面时会显示密码输入界面，输入正确后在该设备上后续访问将不再需要验证。
 
+[![Powered by DartNode](https://dartnode.com/branding/DN-Open-Source-sm.png)](https://dartnode.com "Powered by DartNode - Free VPS for Open Source")
